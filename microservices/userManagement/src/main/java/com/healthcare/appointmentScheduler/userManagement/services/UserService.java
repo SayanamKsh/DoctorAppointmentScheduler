@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.healthcare.appointmentScheduler.userManagement.entity.User;
 import com.healthcare.appointmentScheduler.userManagement.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class UserService {
 	@Autowired
 	UserRepository userRepository;
@@ -19,9 +22,6 @@ public class UserService {
 	}
 	public Optional<User> getUserById(int id) {
 		return userRepository.findById(id);
-	}
-	public User createUser(User user) {
-		return userRepository.save(user);
 	}
 	public List<User> createUsers(List<User> users) {
 		return userRepository.saveAll(users);
