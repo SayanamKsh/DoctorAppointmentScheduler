@@ -13,7 +13,7 @@ import com.healthcare.appointmentScheduler.userManagement.entity.Patient;
 import com.healthcare.appointmentScheduler.userManagement.services.PatientService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/patient")
 public class PatientController {
 
 	@Autowired
