@@ -1,5 +1,7 @@
 package com.healthcare.appointmentScheduler.userManagement.entity;
 
+import java.time.LocalTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,21 +18,24 @@ import lombok.Data;
 public class Doctor implements java.io.Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer doctorId;
 	
 	@OneToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "user_id",nullable = false)
 	private User user;
 	
 	private String specialty;
 
+	private LocalTime startTime;
 	
-	public Integer getId() {
-		return id;
+	private Integer workingHour;
+	
+	public Integer getDoctorId() {
+		return doctorId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setDoctorId(Integer doctorId) {
+		this.doctorId = doctorId;
 	}
 
 	public User getUser() {
@@ -48,7 +53,35 @@ public class Doctor implements java.io.Serializable{
 	public void setSpecialty(String specialty) {
 		this.specialty = specialty;
 	}
-
 	
+	public LocalTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public Integer getWorkingHour() {
+		return workingHour;
+	}
+
+	public void setWorkingHour(Integer workingHour) {
+		this.workingHour = workingHour;
+	}
+
+	public Doctor() {
+		
+	}
+
+	public Doctor(Integer doctorId, User user, String specialty, LocalTime startTime, Integer workingHour) {
+		super();
+		this.doctorId = doctorId;
+		this.user = user;
+		this.specialty = specialty;
+		this.startTime = startTime;
+		this.workingHour = workingHour;
+	}
+
 
 }
